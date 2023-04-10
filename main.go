@@ -56,7 +56,7 @@ func main() {
 
 		} else {
 			fmt.Printf(" Новая карта другого банка была добавлена\n")
-			ress, _ := Lists.Sort()
+			_, ress := Lists.Sort()
 			fmt.Println(ress)
 		}
 
