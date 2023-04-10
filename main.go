@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -24,22 +25,18 @@ func main() {
 	if err != nil {
 		log.Fatal("Неверный формат ввода!", err)
 	}
-	fmt.Println("Введенное значение:", input)
+	//fmt.Println("Введенное значение:", input)
 	if len(input) != 9 {
 		log.Fatal("Длинна не соответствует формату счёта карты! (Количество символов счёта = 9)")
 	}
 	if input[4] != 45 {
 		log.Fatal(`Отсутствует знак "-"`)
 	}
-	numCheck, err := strconv.Atoi(input[0:4])
+	input = strings.ReplaceAll(input, "-", "")
+	numCheck, err := strconv.Atoi(input)
 	if err != nil {
 		fmt.Println("Ошибка ввода")
 		fmt.Println(numCheck)
-	}
-	numCheck2, err := strconv.Atoi(input[5:9])
-	if err != nil {
-		fmt.Println("Ошибка ввода")
-		fmt.Println(numCheck2)
 	}
 	if v, exists := (Humo[input]); exists {
 		fmt.Print(v)
