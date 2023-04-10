@@ -9,13 +9,14 @@ import (
 
 func main() {
 
-	Humo, _ := Lists.Sort()
-	_, Others := Lists.Sort()
+	Humo, Others := Lists.Sort()
 
-	fmt.Println("Список карточек Хумо:")
-	fmt.Printf("%v\n\n", Humo)
-	fmt.Println("Список карточек Других банков:")
-	fmt.Printf("%v\n\n", Others)
+	/*
+		fmt.Println("Список карточек Хумо:")
+		fmt.Printf("%v\n\n", Humo)
+		fmt.Println("Список карточек Других банков:")
+		fmt.Printf("%v\n\n", Others)
+	*/
 
 	var input string
 	fmt.Println("Введите счёт карты!")
@@ -51,13 +52,12 @@ func main() {
 
 		if input[3] >= 53 {
 			fmt.Printf(" Новая карта Хумо была добавлена\n")
-			ress, _ := Lists.Sort()
-			fmt.Println(ress)
+			Lists.Sort()
 
 		} else {
 			fmt.Printf(" Новая карта другого банка была добавлена\n")
-			_, ress := Lists.Sort()
-			fmt.Println(ress)
+			Lists.Sort()
+
 		}
 
 	}
