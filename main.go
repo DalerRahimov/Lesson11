@@ -1,31 +1,21 @@
 package main
 
 import (
+	"Lesson11/Lists"
 	"fmt"
 	"log"
 	"strconv"
 )
 
 func main() {
-	CardList1 := []string{"0213-2321", "4215-2321", "5421-2321", "2245-2321", "9865-2321"}
-	CardList2 := []string{"0000-2321", "3211-2321", "8213-2321", "9213-2321", "7213-2321"}
-	TotalList := append(CardList1, CardList2...)
 
-	HumoMap := make(map[string]string)
+	Humo, _ := Lists.Sort()
+	_, Others := Lists.Sort()
 
-	OthersBanksMap := make(map[string]string)
-	for _, v := range TotalList {
-		if v[0] >= 53 {
-			HumoMap[v] = ""
-
-		} else {
-			OthersBanksMap[v] = ""
-		}
-	}
 	fmt.Println("Список карточек Хумо:")
-	fmt.Printf("%v\n\n", HumoMap)
+	fmt.Printf("%v\n\n", Humo)
 	fmt.Println("Список карточек Других банков:")
-	fmt.Printf("%v\n\n", OthersBanksMap)
+	fmt.Printf("%v\n\n", Others)
 
 	var input string
 	fmt.Println("Введите счёт карты!")
@@ -50,21 +40,24 @@ func main() {
 		fmt.Println("Ошибка ввода")
 		fmt.Println(numCheck2)
 	}
-	if v, exists := (HumoMap[input]); exists {
+	if v, exists := (Humo[input]); exists {
 		fmt.Print(v)
 		fmt.Println("Такая карта уже существует ")
-	} else if v, exists := (OthersBanksMap[input]); exists {
+	} else if v, exists := (Others[input]); exists {
 		fmt.Print(v)
 		fmt.Println("Такая карта уже существует ")
 	} else {
-		CardList1 = append(CardList1, input)
-		if input[4] >= 53 {
+		Lists.CardList1 = append(Lists.CardList1, input)
+
+		if input[3] >= 53 {
 			fmt.Printf(" Новая карта Хумо была добавлена\n")
-			fmt.Println(CardList1)
+			ress, _ := Lists.Sort()
+			fmt.Println(ress)
 
 		} else {
 			fmt.Printf(" Новая карта другого банка была добавлена\n")
-			fmt.Println(CardList1)
+			ress, _ := Lists.Sort()
+			fmt.Println(ress)
 		}
 
 	}
